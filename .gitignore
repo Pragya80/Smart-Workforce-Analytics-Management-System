@@ -1,0 +1,32 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Packaging / tooling
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Matplotlib config cache (if MPLCONFIGDIR points here)
+.mplconfig/
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+*.log
+*.tmp
