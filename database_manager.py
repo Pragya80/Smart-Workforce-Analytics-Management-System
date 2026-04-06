@@ -31,20 +31,24 @@ class DatabaseManager:
         conn = self.connect()
         cursor = conn.cursor()
 
-        cursor.execute("""
-            INSERT INTO employees (emp_id, name, department, salary, age, experience)
-            VALUES (?, ?, ?, ?, ?, ?)
-        """, (
-            employee.emp_id,
-            employee.name,
-            employee.department,
-            employee.salary,
-            employee.age,
-            employee.experience
-        ))
-
-        conn.commit()
-        conn.close()
+        try:
+            cursor.execute("""
+                INSERT INTO employees (emp_id, name, department, salary, age, experience)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (
+                employee.emp_id,
+                employee.name,
+                employee.department,
+                employee.salary,
+                employee.age,
+                employee.experience
+            ))
+            conn.commit()
+        except Exception as e:
+            # Handle duplicate entries gracefully
+            pass
+        finally:
+            conn.close()
 
     def get_all_employees(self):
         conn = self.connect()
